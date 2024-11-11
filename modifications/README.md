@@ -38,56 +38,53 @@ To use these files, simply locate the appropriate module and assignment/quiz/pro
     - Your Team's Project Proposal
 
 - Week 5:
-    - Prep Material
+    - Prep Material (Chapter Reading) (1-2 question quiz)
     - Screenshot of Project ERD
     - SQL script for creating the database
     - Video of you explaining your ERD and SQL script (Group Rotation)
 
 - Week 6:
-    - Prep Material
+    - Prep Material (Chapter Reading) (1-2 question quiz)
     - Screenshot of Project ERD
     - SQL script for creating the database
     - Insert script for adding data to the database (Includes transactions)
     - Video of you explaining your ERD and SQL script (Group Rotation)
 
 - Week 7:
-    - Prep Material
-    - Quiz 
+    - Prep Material (Chapter Reading) (1-2 question quiz)
+    - Quiz  (Based on Chapter) (3-5 questions)
     - Exercises (Weekend Homework)
     - Video Explaining What You Learned and how you applied it to your project (Group Rotation)
 
 - Week 8:
-    - Prep Material
-    - Quiz 
+    - Prep Material (Chapter Reading) (1-2 question quiz)
+    - Quiz (Based on Chapter) (3-5 questions)
     - Exercises (Weekend Homework)
     - Video Explaining What You Learned and how you applied it to your project (Group Rotation)
 
 - Week 9:
-    - Prep Material
-    - Quiz 
+    - Prep Material (Chapter Reading) (1-2 question quiz)
+    - Quiz (Based on Chapter) (3-5 questions)
     - Exercises (Weekend Homework)
     - Video Explaining What You Learned and how you applied it to your project (Group Rotation)
 
 - Week 10:
-    - Prep Material
-    - Quiz 
+    - Prep Material (Chapter Reading) (1-2 question quiz)
+    - Quiz (Based on Chapter) (3-5 questions)
     - Exercises (Weekend Homework)
     - Video Explaining What You Learned and how you applied it to your project (Group Rotation)
 
 - Week 11:
-    - Prep Material
-    - Quiz 
+    - Prep Material (Chapter Reading) (1-2 question quiz)
+    - Quiz (Based on Chapter) (3-5 questions)
     - Exercises (Weekend Homework)
     - Video Explaining What You Learned and how you applied it to your project (Group Rotation)
 
 - Week 12:
-    - Prep Material
-    - Quiz 
+    - Prep Material (Chapter Reading) (1-2 question quiz)
+    - Quiz (Based on Chapter) (3-5 questions)
     - Exercises (Weekend Homework)
     - Video Explaining What You Learned and how you applied it to your project (Group Rotation)
 
 - Week 13:
-    - Prep Material
-    - Quiz 
-    - Exercises (Weekend Homework)
     - Project Submission
