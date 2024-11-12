@@ -38,7 +38,7 @@ SELECT name,
         WHEN name IN ('Japanese','Mandarin')
         THEN 'utf8'
         ELSE 'unknown'
-	END character_set
+	END AS character_set
 FROM language;
 
 -- ---------------------------------------------------------------------------
