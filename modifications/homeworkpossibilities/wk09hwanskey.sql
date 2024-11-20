@@ -64,12 +64,13 @@ WHERE f.flightno = 'AL9073'
 AND f.flight_id = 93
 ORDER BY f.flight_id;
 
--- -------------------------------------------------------------------------------
+-- --------------------------------------------------------------------------------------
 -- 3. How many flights are on each day that are contained within the U.S.?
 --    These flights depart from a city in the U.S. and arrives at a U.S. city
+--    Also display the total amount of flights at the end
 --    The columns should look like the following:
---    | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday |
--- -------------------------------------------------------------------------------
+--    | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday | Total |
+-- --------------------------------------------------------------------------------------
 SELECT 
 	SUM(CASE WHEN fs.monday = 1 THEN 1 ELSE 0 END) AS 'Monday'
 ,	SUM(CASE WHEN fs.tuesday = 1 THEN 1 ELSE 0 END) AS 'Tuesday'
@@ -78,6 +79,7 @@ SELECT
 ,	SUM(CASE WHEN fs.friday = 1 THEN 1 ELSE 0 END) AS 'Friday'
 ,	SUM(CASE WHEN fs.saturday = 1 THEN 1 ELSE 0 END) AS 'Saturday'
 ,	SUM(CASE WHEN fs.sunday = 1 THEN 1 ELSE 0 END) AS 'Sunday'
+,   SUM(sunday + monday + tuesday + wednesday + thursday + friday + saturday) AS 'Total'
 FROM flightschedule fs
 INNER JOIN airport a
 ON   fs.from = a.airport_id

@@ -19,12 +19,13 @@ USE airportdb;
 -- ---------------------------------------------------------------------------
 
 
--- -------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
 -- 3. How many flights are on each day that are contained within the U.S.?
 --    These flights depart from a city in the U.S. and arrives at a U.S. city
+--    Also display the total amount of flights at the end
 --    The columns should look like the following:
---    | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday |
--- -------------------------------------------------------------------------------
+--    | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday | Total |
+-- -------------------------------------------------------------------------------------
 
 
 -- ---------------------------------------------------------------------------
