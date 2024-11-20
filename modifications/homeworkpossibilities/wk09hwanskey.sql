@@ -14,12 +14,12 @@ SELECT f.flightno AS 'Flight Number'
 FROM flight f
 INNER JOIN airport a
 ON   f.from = a.airport_id
-INNER JOIN airport a1
-ON   f.to = a1.airport_id
+INNER JOIN airport a2
+ON   f.to = a2.airport_id
 INNER JOIN airport_geo ag
 ON   a.airport_id = ag.airport_id
 INNER JOIN airport_geo ag2
-ON   a1.airport_id = ag2.airport_id
+ON   a2.airport_id = ag2.airport_id
 WHERE f.flightno = 'AL9073'
 AND f.flight_id = 93
 ORDER BY f.flight_id;
