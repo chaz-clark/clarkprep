@@ -9,8 +9,8 @@ USE airportdb;
 SELECT f.flightno AS 'Flight Number'
 ,      CONCAT(ag.city, ', ', ag.country) AS 'From'
 ,      CONCAT(ag2.city, ', ', ag2.country) AS 'To'
-,      f.departure AS 'Departure Date'
-,      f.arrival AS 'Arrival Date'
+,      DATE_FORMAT(f.departure, '%b %d, %Y %h:%i %p') AS 'Departure Date'
+,      DATE_FORMAT(f.arrival, '%b %d, %Y %h:%i %p') AS 'Arrival Date'
 FROM flight f
 INNER JOIN airport a
 ON   f.from = a.airport_id
