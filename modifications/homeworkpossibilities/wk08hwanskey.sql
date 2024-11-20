@@ -37,13 +37,14 @@ WHERE  SUBSTRING(at.identifier, LOCATE('747', at.identifier), 3);
 -- -------------------------------------------------------------------------------------------------
 -- 4. List what each passenger paid for their seat on flight number: AF1837
 --    on June 1st, 2015. Show the original price, round the price to the nearest dollar, and floor it.
---   Add a $ sign to all prices.
---   Sort prices from lowest to highest.
---   Columns will look like the following:
---   | Flight Number | Departure Date | Passenger Name | Price | Rounded Price | Floored Price |
+--    Add a $ sign to all prices.
+--    Format the dates to look like: Feb 28, 2015 3:00:00 PM
+--    Sort prices from lowest to highest.
+--    Columns will look like the following:
+--    | Flight Number | Departure Date | Passenger Name | Price | Rounded Price | Floored Price |
 -- -------------------------------------------------------------------------------------------------
 SELECT f.flightno AS 'Flight Number'
-,      f.departure AS 'Departure Date'
+,      DATE_FORMAT(f.departure, '%b %d, %Y %r') AS 'Departure Date'
 ,      CONCAT(p.firstname, ' ', p.lastname) AS 'Passenger Name'
 ,      CONCAT('$',FORMAT(b.price, 2)) AS 'Price'
 ,      CONCAT('$',FORMAT(b.price,0)) AS 'Rounded Price'
@@ -61,18 +62,19 @@ ORDER BY b.price;
 -- 5. Find all flights that have a duration of 20 hours or more. 
 --    Show hours, how many days and how many years since the flight (Use FLOOR).
 --    Sort them by longest flight first.
+--    Format the dates to look like: Feb 28, 2015 3:00:00 PM
 --    Limit to 10 results.
 --    Columns will look like the following:
 --    | Departure Date | Arrival Date | Duration in Hours | Duration in Days | Years Since Flight |
 -- -------------------------------------------------------------------------------------------------
-SELECT departure AS 'Departure Date'
-,      arrival   AS 'Arrival Date'
-,      TIMESTAMPDIFF(hour, departure, arrival) AS 'Duration in Hours'
-,      DATEDIFF(arrival, departure) AS 'Duration in Days'
-,      FLOOR(DATEDIFF(NOW(), arrival)/365) AS 'Years Since Flight'
-FROM   flight
-WHERE  TIMESTAMPDIFF(hour, departure, arrival) > 20
-ORDER BY TIMESTAMPDIFF(hour, departure, arrival) DESC
+SELECT DATE_FORMAT(f.departure, '%b %d, %Y %r') AS 'Departure Date'
+,      DATE_FORMAT(f.arrival, '%b %d, %Y %r')  AS 'Arrival Date'
+,      TIMESTAMPDIFF(hour, f.departure, f.arrival) AS 'Duration in Hours'
+,      DATEDIFF(f.arrival, f.departure) AS 'Duration in Days'
+,      FLOOR(DATEDIFF(NOW(), f.arrival)/365) AS 'Years Since Flight'
+FROM   flight f
+WHERE  TIMESTAMPDIFF(hour, f.departure, f.arrival) > 20
+ORDER BY TIMESTAMPDIFF(hour, f.departure, f.arrival) DESC
 LIMIT 10;
 
 -- -------------------------------------------------------------------------
