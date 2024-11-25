@@ -93,6 +93,7 @@ WHERE ag.country = 'United States'
 AND   ag2.country = 'United States';
 
 -- ---------------------------------------------------------------------------
+--    YOU MAY NEED TO RUN THIS QUERY FROM THE TERMINAL TO VERIFY THAT IT WORKS
 -- 4. List the number of passengers each flight serviced within the U.S.
 --    Sort by total number of passengers from greatest to least
 --    The activity column consists of a case statement with the
