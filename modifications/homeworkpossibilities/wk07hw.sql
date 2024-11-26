@@ -3,24 +3,32 @@ USE airportdb;
 -- --------------------------------------------------------------------------
 -- 1. What are the unique last names of our employees?
 --    List them in alphabetical order.
+--    Columns will look like the following:
+--    | Last Name |
 -- --------------------------------------------------------------------------
 
 
 -- --------------------------------------------------------------------------
 -- 2. What are the airlines and which airports are they based in?
 --    List the airlines in alphabetical order.
+--    Columns will look like the following:
+--    | Airline | Airport |
 -- --------------------------------------------------------------------------
 
 
 -- --------------------------------------------------------------------------
 -- 3. What are the first 20 airports that are based in the United States?
 --    Display the airport name and country.
+--    Columns will look like the following:
+--    | Airport | Country |
 -- --------------------------------------------------------------------------
 
 
 -- --------------------------------------------------------------------------
 -- 4. What are the top 10 airports without an IATA code?
 --    Display the airport name, IATA code, and ICAO code.
+--    Columns will look like the following:
+--    | Airport | IATA | ICAO |
 -- --------------------------------------------------------------------------
 
 

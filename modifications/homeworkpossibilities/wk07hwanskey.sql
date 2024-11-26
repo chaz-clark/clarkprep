@@ -3,6 +3,8 @@ USE airportdb;
 -- --------------------------------------------------------------------------
 -- 1. What are the unique last names of our employees?
 --    List them in alphabetical order.
+--    Columns will look like the following:
+--    | Last Name |
 -- --------------------------------------------------------------------------
 SELECT DISTINCT e.lastname AS 'Last Name'
 FROM   employee e
@@ -11,6 +13,8 @@ ORDER BY e.lastname;
 -- --------------------------------------------------------------------------
 -- 2. What are the airlines and which airports are they based in?
 --    List the airlines in alphabetical order.
+--    Columns will look like the following:
+--    | Airline | Airport |
 -- --------------------------------------------------------------------------
 SELECT al.airlinename AS 'Airline'
 ,      a.name AS 'Airport'
@@ -22,6 +26,8 @@ ORDER BY al.airlinename;
 -- --------------------------------------------------------------------------
 -- 3. What are the first 20 airports that are based in the United States?
 --    Display the airport name and country.
+--    Columns will look like the following:
+--    | Airport | Country |
 -- --------------------------------------------------------------------------
 SELECT a.name AS 'Airport'
 ,      ag.country AS 'Country'
@@ -34,6 +40,8 @@ LIMIT 20;
 -- --------------------------------------------------------------------------
 -- 4. What are the top 10 airports without an IATA code?
 --    Display the airport name, IATA code, and ICAO code.
+--    Columns will look like the following:
+--    | Airport | IATA | ICAO |
 -- --------------------------------------------------------------------------
 SELECT a.name AS 'Airport'
 ,      a.iata AS 'IATA'
