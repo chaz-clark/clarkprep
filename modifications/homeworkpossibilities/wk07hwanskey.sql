@@ -13,10 +13,10 @@ ORDER BY e.lastname;
 --    List the airlines in alphabetical order.
 -- --------------------------------------------------------------------------
 SELECT al.airlinename AS 'Airline'
-,      a.airport AS 'Airport'
+,      a.name AS 'Airport'
 FROM   airline al
 INNER JOIN airport a
-ON     al.airport_id = a.airport_id
+ON     al.base_airport = a.airport_id
 ORDER BY al.airlinename;
 
 -- --------------------------------------------------------------------------
@@ -58,6 +58,7 @@ FROM flightschedule fs
 INNER JOIN airline al
 ON     fs.airline_id = al.airline_id
 WHERE fs.departure BETWEEN '10:00:00' AND '10:15:00'
+AND   fs.monday = 1
 ORDER BY fs.departure;
 
 -- --------------------------------------------------------------------------
