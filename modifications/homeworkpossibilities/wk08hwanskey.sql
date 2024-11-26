@@ -9,7 +9,7 @@ USE airportdb;
 -- -------------------------------------------------------------------------
 SELECT   CONCAT(p.firstname, ' ', p.lastname) AS 'Passenger Name'
 FROM     passenger p
-WHERE    length(p.lastname) = 1
+WHERE    LENGTH(p.lastname) = 1
 ORDER BY p.lastname;
 
 -- -------------------------------------------------------------------------
@@ -25,12 +25,13 @@ AND    lastname LIKE '%XX';
 
 -- -------------------------------------------------------------------------
 -- 3. Find the airplane type that contains '747' in the identifier.
+--    Print the first 15 characters of the description.
 --    Hint: (Use the substring and locate functions)
 --    Your columns will look like the following:
 --    | Airplane Identifier | Airplane Description |
 -- -------------------------------------------------------------------------
 SELECT at.identifier AS 'Airplane Identifier'
-,      at.description AS 'Airplane Description'
+,      LEFT(at.description,15) AS 'Airplane Description'
 FROM   airplane_type at
 WHERE  SUBSTRING(at.identifier, LOCATE('747', at.identifier), 3);
 
@@ -46,9 +47,9 @@ WHERE  SUBSTRING(at.identifier, LOCATE('747', at.identifier), 3);
 SELECT f.flightno AS 'Flight Number'
 ,      DATE_FORMAT(f.departure, '%b %d, %Y %r') AS 'Departure Date'
 ,      CONCAT(p.firstname, ' ', p.lastname) AS 'Passenger Name'
-,      CONCAT('$',FORMAT(b.price, 2)) AS 'Price'
-,      CONCAT('$',FORMAT(b.price,0)) AS 'Rounded Price'
-,      CONCAT('$',FLOOR(b.price)) AS 'Floored Price'
+,      CONCAT('$', FORMAT(b.price, 2)) AS 'Price'
+,      CONCAT('$', FORMAT(b.price,0)) AS 'Rounded Price'
+,      CONCAT('$', FLOOR(b.price)) AS 'Floored Price'
 FROM booking b
 INNER JOIN flight f
 ON   b.flight_id = f.flight_id

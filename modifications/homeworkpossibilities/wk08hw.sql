@@ -19,6 +19,7 @@ USE airportdb;
 
 -- -------------------------------------------------------------------------
 -- 3. Find the airplane type that contains '747' in the identifier.
+--    Print the first 15 characters of the description.
 --    Hint: (Use the substring and locate functions)
 --    Your columns will look like the following:
 --    | Airplane Identifier | Airplane Description |
