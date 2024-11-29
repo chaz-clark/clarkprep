@@ -3,6 +3,8 @@ USE airportdb;
 
 -- ---------------------------------------------------------------------------
 -- 1. What are the flight details for flight AL9073 (flight id #93)?
+--    Format the dates to look like: Jun 01, 2015 07:56 AM
+--    The From and To columns should display the city and country together.
 --    The columns should look like the following:
 --    | Flight Number | From | To | Departure Date | Arrival Date |
 -- ---------------------------------------------------------------------------
@@ -29,13 +31,15 @@ USE airportdb;
 
 
 -- ---------------------------------------------------------------------------
+--    YOU MAY NEED TO RUN THIS QUERY FROM THE TERMINAL TO VERIFY THAT IT WORKS
 -- 4. List the number of passengers each flight serviced within the U.S.
 --    Sort by total number of passengers from greatest to least
 --    The activity column consists of a case statement with the
 --    following conditions:
 --    - If 10,000 or more, state "High Activity"
---    - If 5,000 or more, state "Moderate Activity"
---    - If less than 5,000, state "Low Activity"
+--    - If between 5,000 and 10,000, state "Moderate Activity"
+--    - If between 1,000 and 5,000, state "Low Activity"
+--    - If less than 1,000, state "Very Low Activity"
 --    The columns should look like the following:
 --    | Flight Number | From | To | Activity | Number of Passengers |
 -- ---------------------------------------------------------------------------

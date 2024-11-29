@@ -3,6 +3,8 @@ USE airportdb;
 
 -- ---------------------------------------------------------------------------
 -- 1. What are the flight details for flight AL9073 (flight id #93)?
+--    Format the dates to look like: Jun 01, 2015 07:56 AM
+--    The From and To columns should display the city and country together.
 --    The columns should look like the following:
 --    | Flight Number | From | To | Departure Date | Arrival Date |
 -- ---------------------------------------------------------------------------
@@ -99,8 +101,9 @@ AND   ag2.country = 'United States';
 --    The activity column consists of a case statement with the
 --    following conditions:
 --    - If 10,000 or more, state "High Activity"
---    - If 5,000 or more, state "Moderate Activity"
---    - If less than 5,000, state "Low Activity"
+--    - If between 5,000 and 10,000, state "Moderate Activity"
+--    - If between 1,000 and 5,000, state "Low Activity"
+--    - If less than 1,000, state "Very Low Activity"
 --    The columns should look like the following:
 --    | Flight Number | From | To | Activity | Number of Passengers |
 -- ---------------------------------------------------------------------------
@@ -108,10 +111,11 @@ SELECT  f.flightno AS 'Flight Number'
 ,       CONCAT(ag.city, ', ', ag.country) AS 'From'
 ,       CONCAT(ag2.city, ', ', ag2.country) AS 'To'
 ,       CASE 
-		    WHEN COUNT(b.passenger_id) > 10000 THEN 'High Activity' 
-		    WHEN COUNT(b.passenger_id) BETWEEN 5000 AND 10000 THEN 'Medium Activity'
-		    WHEN COUNT(b.passenger_id) BETWEEN 0 AND 5000 THEN 'Low Activity'
-	    END AS 'Activity'
+			WHEN COUNT(b.passenger_id) > 10000 THEN 'High Activity' 
+			WHEN COUNT(b.passenger_id) BETWEEN 5000 AND 10000 THEN 'Medium Activity'
+			WHEN COUNT(b.passenger_id) BETWEEN 1000 AND 5000 THEN 'Low Activity'
+			WHEN COUNT(b.passenger_id) < 1000 THEN 'Very Low Activity'
+		END AS 'Activity'
 ,       COUNT(b.passenger_id) AS 'Number of Passengers'
 FROM    flight f
 INNER JOIN airport a
