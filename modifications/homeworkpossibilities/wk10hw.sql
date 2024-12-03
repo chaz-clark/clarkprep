@@ -2,7 +2,8 @@
 USE airportdb;
 
 -- ---------------------------------------------------------------------------
--- 1. Who are our frequent fliers?
+-- 1. Who are our frequent fliers that reside in the U.K. and have flown
+--    somewhere in the world from the U.K.?
 --    Show their status as 'Platinum', 'Gold', 'Silver', or 'No Status' 
 --    based on the number of flights they have taken.
 --    The conditions are as follows
@@ -10,8 +11,8 @@ USE airportdb;
 --    - Gold: 20 or more flights
 --    - Silver: 10 or more flights
 --    - No Status: Less than 10 flights
---    and the number of flights they have taken.
---    Group by month
+--    List the number of flights they have taken.
+--    Group by departure month.
 --    The columns should look like the following:
 --    | Status | Number of Flights | First Name | Last Name |
 -- ---------------------------------------------------------------------------
