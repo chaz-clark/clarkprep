@@ -14,9 +14,9 @@
 --    | Status | Number of Flights | First Name | Last Name |
 -- ---------------------------------------------------------------------------
 SELECT CASE 
-		WHEN COUNT(p.passenger_id) > 30 THEN 'Platinum'
-		WHEN COUNT(p.passenger_id) > 20 THEN 'Gold' 
-        WHEN COUNT(p.passenger_id) > 10 THEN 'Silver'
+		WHEN COUNT(p.passenger_id) >= 30 THEN 'Platinum'
+		WHEN COUNT(p.passenger_id) >= 20 THEN 'Gold' 
+        WHEN COUNT(p.passenger_id) >= 10 THEN 'Silver'
         ELSE 'No Status'
 		END AS 'Status'
 ,      COUNT(p.passenger_id) AS 'Number of Flights'
