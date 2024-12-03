@@ -22,11 +22,11 @@ SELECT CASE
         WHEN COUNT(p.passenger_id) >= 10 THEN 'Silver'
         ELSE 'No Status'
 		END AS 'Status'
-,      COUNT(p.passenger_id) AS 'Number of Flights'
+,      SUM(CASE WHEN b.passenger_id IS NULL THEN 0 ELSE 1 END) AS 'Number of Flights'
 ,      p.firstname AS 'First Name'
 ,      p.lastname AS 'Last Name'
 FROM   passenger p
-INNER JOIN passengerdetails pd
+LEFT JOIN passengerdetails pd
 ON     p.passenger_id = pd.passenger_id
 LEFT JOIN booking b
 ON     p.passenger_id =  b.passenger_id
@@ -34,14 +34,11 @@ LEFT JOIN flight f
 ON     b.flight_id = f.flight_id
 LEFT JOIN airport a
 ON     f.from = a.airport_id
-LEFT JOIN airport a2
-ON     f.to = a2.airport_id
 LEFT JOIN airport_geo ag
 ON     a.airport_id = ag.airport_id
-LEFT JOIN airport_geo ag2
-ON     a2.airport_id = ag2.airport_id
-WHERE  ag.country = 'United Kingdom'
-AND    pd.country = 'United Kingdom'
+WHERE  (ag.country = 'United Kingdom' AND pd.country = 'United Kingdom')
+OR      (b.passenger_id IS NULL AND pd.country IS NULL)
+OR      (b.passenger_id IS NULL AND pd.country = 'United Kingdom')
 GROUP BY p.firstname
 ,        p.lastname
 ,        MONTH(f.departure)
@@ -60,11 +57,11 @@ SELECT CASE
         WHEN COUNT(p.passenger_id) > 10 THEN 'Silver'
         ELSE 'No Status'
 		END AS 'Status'
-,      COUNT(p.passenger_id) AS 'Number of Flights'
+,      SUM(CASE WHEN b.passenger_id IS NULL THEN 0 ELSE 1 END) AS 'Number of Flights'
 ,      p.firstname AS 'First Name'
 ,      p.lastname AS 'Last Name'
 FROM   passenger p
-INNER JOIN passengerdetails pd
+LEFT JOIN passengerdetails pd
 ON     p.passenger_id = pd.passenger_id
 LEFT JOIN booking b
 ON     p.passenger_id =  b.passenger_id
@@ -72,18 +69,15 @@ LEFT JOIN flight f
 ON     b.flight_id = f.flight_id
 LEFT JOIN airport a
 ON     f.from = a.airport_id
-LEFT JOIN airport a2
-ON     f.to = a2.airport_id
 LEFT JOIN airport_geo ag
 ON     a.airport_id = ag.airport_id
-LEFT JOIN airport_geo ag2
-ON     a2.airport_id = ag2.airport_id
-WHERE  ag.country = 'United Kingdom'
-AND    pd.country = 'United Kingdom'
+WHERE  (ag.country = 'United Kingdom' AND pd.country = 'United Kingdom')
+OR      (b.passenger_id IS NULL AND pd.country IS NULL)
+OR      (b.passenger_id IS NULL AND pd.country = 'United Kingdom')
 GROUP BY p.firstname
 ,        p.lastname
 ,        MONTH(f.departure)
-HAVING   COUNT(b.passenger_id) = 0
+HAVING   SUM(CASE WHEN b.passenger_id IS NULL THEN 0 END) = 0
 ORDER BY COUNT(b.passenger_id) DESC;
 
 
@@ -98,12 +92,12 @@ SELECT CASE
         WHEN COUNT(p.passenger_id) > 10 THEN 'Silver'
         ELSE 'No Status'
 		END AS 'Status'
-,      COUNT(p.passenger_id) AS 'Number of Flights'
+,      SUM(CASE WHEN b.passenger_id IS NULL THEN 0 ELSE 1 END) AS 'Number of Flights'
 ,      p.firstname AS 'First Name'
 ,      p.lastname AS 'Last Name'
 ,      pd.country AS 'Passenger Country'
 FROM   passenger p
-INNER JOIN passengerdetails pd
+LEFT JOIN passengerdetails pd
 ON     p.passenger_id = pd.passenger_id
 LEFT JOIN booking b
 ON     p.passenger_id =  b.passenger_id
@@ -111,17 +105,12 @@ LEFT JOIN flight f
 ON     b.flight_id = f.flight_id
 LEFT JOIN airport a
 ON     f.from = a.airport_id
-LEFT JOIN airport a2
-ON     f.to = a2.airport_id
 LEFT JOIN airport_geo ag
 ON     a.airport_id = ag.airport_id
-LEFT JOIN airport_geo ag2
-ON     a2.airport_id = ag2.airport_id
-WHERE  ag.country = 'United Kingdom'
-AND    pd.country = 'United Kingdom'
-AND    pd.passenger_id IS NULL
+WHERE  (b.passenger_id IS NULL AND pd.country IS NULL)
 GROUP BY p.firstname
 ,        p.lastname
+,        pd.country
 ,        MONTH(f.departure)
-HAVING   COUNT(b.passenger_id) = 0
+HAVING   SUM(CASE WHEN b.passenger_id IS NULL THEN 0 END) = 0
 ORDER BY COUNT(b.passenger_id) DESC;
