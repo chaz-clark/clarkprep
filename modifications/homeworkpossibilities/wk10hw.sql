@@ -4,6 +4,7 @@ USE airportdb;
 -- ---------------------------------------------------------------------------
 -- 1. Who are our frequent fliers that reside in the U.K. and have flown
 --    somewhere in the world from the U.K.?
+--    We want to see all passengers regardless of whether they have flown.
 --    Show their status as 'Platinum', 'Gold', 'Silver', or 'No Status' 
 --    based on the number of flights they have taken.
 --    The conditions are as follows
@@ -13,6 +14,8 @@ USE airportdb;
 --    - No Status: Less than 10 flights
 --    List the number of flights they have taken.
 --    Group by departure month.
+--    Hint: You will have three AND compound WHERE clause conditions separated
+--    by two OR operators.
 --    The columns should look like the following:
 --    | Status | Number of Flights | First Name | Last Name |
 -- ---------------------------------------------------------------------------
