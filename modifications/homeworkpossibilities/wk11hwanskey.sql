@@ -1,3 +1,6 @@
+-- week 11 questions
+USE airportdb;
+
 -- ---------------------------------------------------------------------------
 -- 1. What are the earliest and latest flights that depart from the U.K.?
 --    How many months of data do we have for those flights?
