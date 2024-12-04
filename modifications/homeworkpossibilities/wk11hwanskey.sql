@@ -85,7 +85,7 @@ GROUP BY CONCAT(ag.city, ' ', ag.country)
 ORDER  BY SUM(b.price) DESC;
 
 -- ---------------------------------------------------------------------------------
--- 4. What is the average revenue generated from flights within the U.K.?
+-- 4. What is the average revenue above $250 generated from flights within the U.K.?
 --    Format the revenue with a dollar sign, comma at the thousands place and
 --    rounded to 2 decimal places.
 --    The columns should look like the following:
@@ -122,7 +122,7 @@ HAVING AVG(b.price) > 250;
 --    - If between 5,000 and 10,000, state "Moderate Activity"
 --    - If between 1,000 and 5,000, state "Low Activity"
 --    - If less than 1,000, state "Very Low Activity"
---    Add the total revenue generated from each flight and average cost per passenger_id
+--    Add the total revenue generated from each flight and average cost per passenger
 --    formatted with the following:
 --    - Dollar sign
 --    - Comma at the thousands place
@@ -141,7 +141,7 @@ SELECT  f.flightno AS 'Flight Number'
 		END AS 'Activity'
 ,       COUNT(b.passenger_id) AS 'Number of Passengers'
 ,       CONCAT('$', FORMAT(SUM(b.price), 2)) AS 'Total Revenue'
-,       SUM(b.price) / COUNT(b.passenger_id) AS 'Average Revenue'
+,       CONCAT('$', FORMAT(SUM(b.price) / COUNT(b.passenger_id),2)) AS 'Average Revenue'
 FROM    flight f
 INNER JOIN airport a
 ON      f.from = a.airport_id

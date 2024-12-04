@@ -26,8 +26,7 @@ USE airportdb;
 
 
 -- ---------------------------------------------------------------------------------
--- 4. What is the average revenue generated from flights within the U.K. that is an
---    average above $250?
+-- 4. What is the average revenue above $250 generated from flights within the U.K.?
 --    Format the revenue with a dollar sign, comma at the thousands place and
 --    rounded to 2 decimal places.
 --    The columns should look like the following:
@@ -44,7 +43,7 @@ USE airportdb;
 --    - If between 5,000 and 10,000, state "Moderate Activity"
 --    - If between 1,000 and 5,000, state "Low Activity"
 --    - If less than 1,000, state "Very Low Activity"
---    Add the total revenue generated from each flight and average cost per passenger_id
+--    Add the total revenue generated from each flight and average cost per passenger
 --    formatted with the following:
 --    - Dollar sign
 --    - Comma at the thousands place
