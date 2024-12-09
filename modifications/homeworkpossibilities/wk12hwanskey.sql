@@ -46,6 +46,7 @@ LIMIT 10;
 -- --------------------------------------------------------------------------------------------------------
 -- 3. What are the top 5 longest flights by duration for each airline?
 --    Don't include any duplicates.
+--    Sort the results by airline name and rank.
 --    Write a CTE statement called `ranked_flights` to find the answer.
 --    Columns will look like the following:
 --    | Airline | Flight Number | Origin Airport | Destination Airport | Flight Duration (Minutes) |
