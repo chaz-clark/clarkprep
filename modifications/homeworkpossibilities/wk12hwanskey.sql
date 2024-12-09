@@ -51,7 +51,7 @@ LIMIT 10;
 --    | Airline | Flight Number | Origin Airport | Destination Airport | Flight Duration (Minutes) |
 -- --------------------------------------------------------------------------------------------------------
 WITH ranked_flights AS (
-    SELECT al.airlinename
+    SELECT DISTINCT al.airlinename
 	,      f.flightno
 	,      a.name AS origin_airport
 	,      a2.name AS destination_airport
@@ -72,10 +72,5 @@ SELECT rf.airlinename AS 'Airline'
 ,      rf.duration_minutes AS 'Flight Duration (Minutes)'
 FROM   ranked_flights rf
 WHERE  rf.rank <= 5
-GROUP BY rf.airlinename
-,        rf.flightno
-,        rf.origin_airport
-,        rf.destination_airport
-,        rf.duration_minutes
 ORDER BY rf.airlinename
 ,        rf.rank;
