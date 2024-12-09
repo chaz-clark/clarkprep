@@ -7,7 +7,6 @@
 -- week 12 questions
 USE airportdb;
 
--- Thought: Take questions from week 10 and 11 and modify them to use CTE statement
 -- ---------------------------------------------------------------------------------
 -- 1. Create a view from week 10 question 1. Make a table based on that view
 --    named `passengerrewards`. Provide a select statement that queries the table.
