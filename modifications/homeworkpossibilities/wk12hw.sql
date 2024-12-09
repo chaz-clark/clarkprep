@@ -18,7 +18,17 @@ USE airportdb;
 
 
 -- --------------------------------------------------------------------------------------------------------
--- 2. Rewrite the question from week 11 question 5 to use a CTE statement.
---    List the following columns:
---    | Flight Number | From | To | Activity | Number of Passengers | Total Revenue | Average Revenue |
+-- 2. What are the top 10 airports that handled the highest number of flights in August?
+--    Write a CTE statement called `flight_counts` to find the answer.
+--    Columns will look like the following:
+--    | Airport | Flight Count |
+-- --------------------------------------------------------------------------------------------------------
+
+
+-- --------------------------------------------------------------------------------------------------------
+-- 3. What are the top 5 longest flights by duration for each airline?
+--    Don't include any duplicates.
+--    Write a CTE statement called `ranked_flights` to find the answer.
+--    Columns will look like the following:
+--    | Airline | Flight Number | Origin Airport | Destination Airport | Flight Duration (Minutes) |
 -- --------------------------------------------------------------------------------------------------------

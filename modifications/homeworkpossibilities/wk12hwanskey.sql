@@ -23,39 +23,59 @@ SELECT pr.status
 FROM   passengerrewards pr;
 
 -- --------------------------------------------------------------------------------------------------------
--- 2. Rewrite the question from week 11 question 5 to use a CTE statement.
---    List the following columns:
---    | Flight Number | From | To | Activity | Number of Passengers | Total Revenue | Average Revenue |
+-- 2. What are the top 10 airports that handled the highest number of flights in August?
+--    Write a CTE statement called `flight_counts` to find the answer.
+--    Columns will look like the following:
+--    | Airport | Flight Count |
 -- --------------------------------------------------------------------------------------------------------
-WITH 
-(SELECT CASE 
-			WHEN COUNT(b.passenger_id) > 10000 THEN 'High Activity' 
-			WHEN COUNT(b.passenger_id) BETWEEN 5000 AND 10000 THEN 'Medium Activity'
-			WHEN COUNT(b.passenger_id) BETWEEN 1000 AND 5000 THEN 'Low Activity'
-			WHEN COUNT(b.passenger_id) < 1000 THEN 'Very Low Activity'
-		END AS 'Activity'
-,       COUNT(b.passenger_id) AS 'Number of Passengers'
-,       CONCAT('$', FORMAT(SUM(b.price), 2)) AS 'Total Revenue'
-,       CONCAT('$', FORMAT(SUM(b.price) / COUNT(b.passenger_id),2)) AS 'Average Revenue'
-FROM    booking b) AS counts
-SELECT f.flightno AS 'Flight Number'
-,      CONCAT(ag.city, ', ', ag.country) AS 'From'
-,      CONCAT(ag2.city, ', ', ag2.country) AS 'To'
-,      counts.Activity
-,      counts.'Number of Passengers'
-,      counts.'Total Revenue'
-,      counts.'Average Revenue'
-FROM   flight f
-INNER JOIN airport a
-ON     f.from = a.airport_id
-INNER JOIN airport a2
-ON     f.to = a2.airport_id
-INNER JOIN airport_geo ag
-ON     a.airport_id = ag.airport_id
-INNER JOIN airport_geo ag2
-ON     a2.airport_id = ag2.airport_id
-WHERE  ag.country = 'United States'
-AND     ag2.country = 'United States'
-GROUP BY f.flightno
-,        CONCAT(ag.city, ', ', ag.country)
-,        CONCAT(ag2.city, ', ', ag2.country);
+WITH flight_counts AS (
+    SELECT a.name AS airport
+	,      COUNT(f.flight_id) AS flight_count
+    FROM   airport a
+	INNER JOIN flight f
+    ON     a.airport_id = f.from
+    WHERE  f.departure BETWEEN '2015-07-01' AND '2015-07-31'
+    GROUP BY a.name
+)
+SELECT fc.airport AS 'Airport'
+,      fc.flight_count AS 'Flight Count'
+FROM   flight_counts fc
+ORDER BY fc.flight_count DESC
+LIMIT 10;
+
+-- --------------------------------------------------------------------------------------------------------
+-- 3. What are the top 5 longest flights by duration for each airline?
+--    Don't include any duplicates.
+--    Write a CTE statement called `ranked_flights` to find the answer.
+--    Columns will look like the following:
+--    | Airline | Flight Number | Origin Airport | Destination Airport | Flight Duration (Minutes) |
+-- --------------------------------------------------------------------------------------------------------
+WITH ranked_flights AS (
+    SELECT al.airlinename
+	,      f.flightno
+	,      a.name AS origin_airport
+	,      a2.name AS destination_airport
+	,      TIMESTAMPDIFF(MINUTE, f.departure, f.arrival) AS duration_minutes
+	,      DENSE_RANK() OVER (PARTITION BY al.airlinename ORDER BY (SELECT duration_minutes) DESC) AS 'rank'
+    FROM   airline al
+    INNER JOIN flight f
+    ON     al.airline_id = f.airline_id
+    INNER JOIN airport a
+    ON     f.from = a.airport_id
+    INNER JOIN airport a2
+    ON     f.to = a2.airport_id
+)
+SELECT rf.airlinename AS 'Airline'
+,      rf.flightno AS 'Flight Number'
+,      rf.origin_airport AS 'Origin Airport'
+,      rf.destination_airport AS 'Destination Airport'
+,      rf.duration_minutes AS 'Flight Duration (Minutes)'
+FROM   ranked_flights rf
+WHERE  rf.rank <= 5
+GROUP BY rf.airlinename
+,        rf.flightno
+,        rf.origin_airport
+,        rf.destination_airport
+,        rf.duration_minutes
+ORDER BY rf.airlinename
+,        rf.rank;
