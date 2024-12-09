@@ -23,7 +23,7 @@ USE airportdb;
 --    This should be done in one query.
 --    A `group by` clause shouldn't be used.
 --    The columns should look like the following:
---    | Flight Number | From | To | Plane Capacity | Original Number of Passengers | Seats Remaining | Full FLight Number of Passengers | Seats Remaining |
+--    | Flight Number | From | To | Plane Capacity | Original Number of Passengers | Seats Remaining | Full Flight Number of Passengers | Seats Remaining |
 -- ---------------------------------------------------------------------------
 
 

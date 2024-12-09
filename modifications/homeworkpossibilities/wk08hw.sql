@@ -56,7 +56,7 @@ USE airportdb;
 
 -- -------------------------------------------------------------------------
 -- 6. Assign a row number to each passenger for flight number: AL9073.
---    flight_id is 93.
+--    The flight_id is 93.
 --    Your columns will look like the following:
 --    | Flight Number | Passenger Name | Row Number |
 -- -------------------------------------------------------------------------

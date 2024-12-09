@@ -6,6 +6,7 @@
 
 -- Week 7 questions
 USE airportdb;
+
 -- --------------------------------------------------------------------------
 -- 1. What are the unique last names of our employees?
 --    List them in alphabetical order.
