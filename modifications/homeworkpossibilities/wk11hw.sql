@@ -2,7 +2,7 @@
 -- You have been hired by BYU-I Air to help sort through the airportdb database. 
 -- Each week you will receive a file from your manager with questions that 
 -- need answered by writing queries against the database. 
--- This week your manager wants you to understand the possiblities of using aggregate functions. 
+-- This week your manager wants you to understand the possibilities of using aggregate functions. 
 
 -- week 11 questions
 USE airportdb;
