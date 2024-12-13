@@ -63,3 +63,5 @@ ORDER BY r.return_date DESC;
 SELECT   DISTINCT
          c.last_name
 FROM     customer c;
+
+
